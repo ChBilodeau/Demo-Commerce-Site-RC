@@ -1,0 +1,14 @@
+node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.*
+!.env.example
+.DS_Store
+.vite
+*.tsbuildinfo
+# Per-user demo configuration (contains the user's org values + tokens).
+# A committed demo.config.example.json documents the shape.
+demo.config.json
+.kiro/setup-bridge/
