@@ -7,7 +7,9 @@ Usage:
     python3 scripts/upload-one-to-cloudinary.py <image-path> <public_id>
 
 Example:
-    ... upload-one-to-cloudinary.py ~/Documents/Commerce_images/07605...png bg-texture
+    ... upload-one-to-cloudinary.py ~/images/bg.png bg-texture
+
+Set CLOUDINARY_CLOUD (plus API key/secret) in the environment first.
 """
 import hashlib
 import mimetypes
@@ -17,7 +19,7 @@ import time
 import urllib.request
 import uuid
 
-CLOUD_NAME = "dazzh5qm"
+CLOUD_NAME = os.environ.get("CLOUDINARY_CLOUD", "your-cloud-name")
 UPLOAD_URL = f"https://api.cloudinary.com/v1_1/{CLOUD_NAME}/image/upload"
 
 

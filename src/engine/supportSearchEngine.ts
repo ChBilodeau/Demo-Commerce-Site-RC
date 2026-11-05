@@ -16,7 +16,8 @@ import { demoConfig } from '../config/demoConfig';
  * Coveo SEARCH API engine for the Technical Support experience.
  *
  * The support page runs on the Search API (not Case Assist) on its own search
- * hub `FASupport`, so it has dedicated analytics, pipeline, and relevance.
+ * hub (from demo.config.json -> coveo.support.searchHub), so it has dedicated
+ * analytics, pipeline, and relevance.
  *
  * Funnel behaviour (confirmed against the live index):
  *   - CATEGORY is a HARD filter — only articles for the chosen vehicle category

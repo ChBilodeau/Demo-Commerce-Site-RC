@@ -22,8 +22,8 @@ Outputs (Apex, batched under the ~32k anonymous-Apex char limit):
 Run:
   python3 salesforce/generate-support-corpus.py
 Then:
-  for f in salesforce/support-corpus/articles-*.apex; do sf apex run --target-org VSCodePlayground --file "$f"; done
-  for f in salesforce/support-corpus/cases-*.apex;    do sf apex run --target-org VSCodePlayground --file "$f"; done
+  for f in salesforce/support-corpus/articles-*.apex; do sf apex run --target-org <your-org-alias> --file "$f"; done
+  for f in salesforce/support-corpus/cases-*.apex;    do sf apex run --target-org <your-org-alias> --file "$f"; done
 """
 import html
 import os
@@ -409,7 +409,7 @@ def main():
 
     art_header = [
         "/* articles-NN.apex (GENERATED) — tagged RC Knowledge articles.",
-        " * Run each batch: sf apex run --target-org VSCodePlayground --file <file> */",
+        " * Run each batch: sf apex run --target-org <your-org-alias> --file <file> */",
         "// row: [slug, title, summary, bodyHtml, vehicleCategory, problemType, descriptionHtml, solutionHtml]",
     ]
 
@@ -446,7 +446,7 @@ def main():
 
     case_header = [
         "/* cases-NN.apex (GENERATED) — RC support Cases mirroring the articles.",
-        " * Run each batch: sf apex run --target-org VSCodePlayground --file <file> */",
+        " * Run each batch: sf apex run --target-org <your-org-alias> --file <file> */",
         "// row: [subject, description, vehicleCategory, problemType, priority]",
     ]
 

@@ -15,15 +15,20 @@ Usage:
     python3 scripts/generate-rc-catalog.py <output.json> [num_products]
 """
 import json
+import os
 import random
 import sys
 
 random.seed(42)  # reproducible
 
-BASE = "https://chbi-shop.example.com"
+# Storefront base URL and Cloudinary cloud name come from the environment so
+# this template carries no real org values. Set them before running:
+#   STOREFRONT_BASE    your storefront base URL (must match the CMH listing pages)
+#   CLOUDINARY_CLOUD   your Cloudinary cloud name
+BASE = os.environ.get("STOREFRONT_BASE", "https://demo.example.com")
 
 # Cloudinary: each product image is stored with public_id = product permanentid.
-CLOUDINARY_CLOUD = "dazzh5qm"
+CLOUDINARY_CLOUD = os.environ.get("CLOUDINARY_CLOUD", "your-cloud-name")
 
 
 def product_image_url(permanentid: str) -> str:
@@ -167,7 +172,7 @@ def main():
         img = product_image_url(product_id)
 
         product = {
-            "DocumentId": f"https://chbi-shop.example.com/pdp/{product_id}",
+            "DocumentId": f"{BASE}/pdp/{product_id}",
             "FileExtension": "html",
             "ObjectType": "Product",
             "ec_name": name,
@@ -197,7 +202,7 @@ def main():
         for ed in chosen:
             sku = f"{product_id}_{ed}"
             variant = {
-                "DocumentId": f"https://chbi-shop.example.com/pdp/{sku}",
+                "DocumentId": f"{BASE}/pdp/{sku}",
                 "FileExtension": "txt",
                 "ObjectType": "Variant",
                 "ec_product_id": product_id,

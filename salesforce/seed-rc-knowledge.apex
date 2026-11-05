@@ -16,7 +16,7 @@
  * re-run, first clean up (see bottom) or you will get DUPLICATE_VALUE errors.
  *
  * HOW TO RUN:
- *   sf apex run --target-org VSCodePlayground --file salesforce/seed-rc-knowledge.apex
+ *   sf apex run --target-org <your-org-alias> --file salesforce/seed-rc-knowledge.apex
  * -----------------------------------------------------------------------------
  */
 

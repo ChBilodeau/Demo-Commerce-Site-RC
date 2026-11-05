@@ -15,13 +15,19 @@ Usage:
     python3 scripts/generate-rc-parts.py <output.json> [approx_count]
 """
 import json
+import os
 import random
 import sys
 
 random.seed(101)
 
-CLOUD = "dazzh5qm"
-BASE = "https://chbi-shop.example.com"
+# Cloudinary cloud name and storefront base URL come from the environment so
+# this template carries no real org values. Set them to your own before running
+# (the setup wizard writes them to demo.config.json; export them here):
+#   CLOUDINARY_CLOUD   your Cloudinary cloud name
+#   STOREFRONT_BASE    your storefront base URL (must match the CMH listing pages)
+CLOUD = os.environ.get("CLOUDINARY_CLOUD", "your-cloud-name")
+BASE = os.environ.get("STOREFRONT_BASE", "https://demo.example.com")
 
 BRANDS = ["Traxxas", "Arrma", "HPI Racing", "Team Associated", "Losi", "Axial",
           "Horizon Hobby", "E-flite", "Blade", "Pro Boat", "DJI", "Spektrum",

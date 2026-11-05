@@ -18,7 +18,7 @@
  *   delete [SELECT Id FROM Case WHERE Subject LIKE 'RC:%'];
  *
  * HOW TO RUN:
- *   sf apex run --target-org VSCodePlayground --file salesforce/seed-rc-cases-batch3.apex
+ *   sf apex run --target-org <your-org-alias> --file salesforce/seed-rc-cases-batch3.apex
  * -----------------------------------------------------------------------------
  */
 

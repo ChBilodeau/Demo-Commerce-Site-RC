@@ -2,7 +2,8 @@ import { NavLink } from 'react-router-dom';
 
 /**
  * Top-level category links. Each maps to a listing page whose URL in the CMH
- * must be `https://chbi-shop.example.com/browse/<slug>` to resolve.
+ * must be `<your storefront base URL>/browse/<slug>` to resolve (the base URL
+ * is demo.config.json -> storefront.baseUrl).
  *
  * Slugs come from the products' `ec_category_slug` field. Keep this list in
  * sync with the PLPs you create in the CMH Product Listings manager.

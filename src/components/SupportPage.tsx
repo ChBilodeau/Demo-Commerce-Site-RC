@@ -247,7 +247,8 @@ function ArticlesStep({
   problem: SupportProblem;
   onCreateCase: () => void;
 }) {
-  // SEARCH API — the support article step runs on the FASupport search hub.
+  // SEARCH API — the support article step runs on the support search hub
+  // (demo.config.json -> coveo.support.searchHub).
   const controllers = useMemo(() => getSupportSearchControllers(), []);
   const [refine, setRefine] = useState('');
   const [results, setResults] = useState<Result[]>(

@@ -8,9 +8,12 @@ Usage:
     python3 scripts/set-cloudinary-images.py <catalog.json>
 """
 import json
+import os
 import sys
 
-CLOUD = "dazzh5qm"
+# Your Cloudinary cloud name. Set CLOUDINARY_CLOUD before running (the setup
+# wizard records it in demo.config.json).
+CLOUD = os.environ.get("CLOUDINARY_CLOUD", "your-cloud-name")
 
 
 def url_for(pid: str) -> str:

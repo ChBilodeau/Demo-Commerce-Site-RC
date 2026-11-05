@@ -1,5 +1,5 @@
 /* cases-NN.apex (GENERATED) — RC support Cases mirroring the articles.
- * Run each batch: sf apex run --target-org VSCodePlayground --file <file> */
+ * Run each batch: sf apex run --target-org <your-org-alias> --file <file> */
 // row: [subject, description, vehicleCategory, problemType, priority]
 List<List<String>> rows = new List<List<String>>{
   new List<String>{'RC: Binding an RC car transmitter and receiver','My new RC car transmitter will not bind to the receiver. The bind light keeps flashing and never goes solid.','Cars & Trucks','Setup & Getting Started','Low'},

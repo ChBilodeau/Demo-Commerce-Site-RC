@@ -5,17 +5,16 @@
  * WHY THIS EXISTS
  * ---------------
  * The analytics Event Protocol expects `view.url` to be the REAL page the user
- * is on. Previously this was hardcoded to a placeholder
- * (`https://chbi-shop.example.com`), which made the logged events carry a fake,
- * unresolvable URL — in the Coveo analytics event browser those events can fail
- * to render an expandable payload. Sending the real URL fixes that.
+ * is on. If this carries a fake, unresolvable URL, the logged events can fail
+ * to render an expandable payload in the Coveo analytics event browser. Sending
+ * the real runtime origin fixes that.
  *
  * PLP CAVEAT
  * ----------
  * A listing page configured in the Commerce Merchandising Hub (CMH) is matched
- * by its exact Page URL. If your PLPs were registered against the old
- * placeholder base, point VITE_STOREFRONT_BASE_URL at that same base so PLP
- * matching keeps working, OR re-register the PLPs against the real origin.
+ * by its exact Page URL. Set `storefront.baseUrl` in demo.config.json to the
+ * exact base your PLPs are registered against so PLP matching keeps working,
+ * OR register the PLPs against the origin you actually serve from.
  *
  * Resolution order:
  *   1. demo.config.json storefront.baseUrl  (explicit override, if set)

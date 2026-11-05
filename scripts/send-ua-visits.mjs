@@ -38,10 +38,14 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-const ORG = '__COVEO_ORG_ID__';
-const TRACKING_ID = 'chbi-shop';
-const CURRENCY = 'CAD';
-const BASE_URL = 'https://chbi-shop.example.com';
+// Org/tracking values come from the environment so this template carries no
+// real org values. Set them before running (the setup wizard records the same
+// values in demo.config.json):
+//   COVEO_ORG_ID, COVEO_TRACKING_ID, COVEO_CURRENCY, STOREFRONT_BASE
+const ORG = process.env.COVEO_ORG_ID || '__COVEO_ORG_ID__';
+const TRACKING_ID = process.env.COVEO_TRACKING_ID || 'your-tracking-id';
+const CURRENCY = process.env.COVEO_CURRENCY || 'USD';
+const BASE_URL = process.env.STOREFRONT_BASE || 'https://demo.example.com';
 const EVENT_URL = `https://${ORG}.analytics.org.coveo.com/rest/organizations/${ORG}/events/v1`;
 
 const TOKEN = process.argv[2];

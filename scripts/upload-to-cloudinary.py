@@ -4,12 +4,13 @@ Bulk-uploads a folder of product images to Cloudinary via signed uploads.
 
 Each file is uploaded with its filename stem as the public_id, so
 `RC00006_00001.png` becomes public_id `RC00006_00001`, reachable at:
-  https://res.cloudinary.com/dazzh5qm/image/upload/RC00006_00001.png
+  https://res.cloudinary.com/<your-cloud>/image/upload/RC00006_00001.png
 
-The API secret is read from an env var so it never lives in the repo.
+The cloud name and API secret are read from env vars so nothing org-specific
+lives in the repo.
 
 Usage:
-    CLOUDINARY_API_KEY=... CLOUDINARY_API_SECRET=... \
+    CLOUDINARY_CLOUD=... CLOUDINARY_API_KEY=... CLOUDINARY_API_SECRET=... \
     python3 scripts/upload-to-cloudinary.py <folder-of-images>
 
 Standard library only (no cloudinary SDK needed).
@@ -22,7 +23,7 @@ import urllib.request
 import uuid
 import mimetypes
 
-CLOUD_NAME = "dazzh5qm"
+CLOUD_NAME = os.environ.get("CLOUDINARY_CLOUD", "your-cloud-name")
 UPLOAD_URL = f"https://api.cloudinary.com/v1_1/{CLOUD_NAME}/image/upload"
 IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
 

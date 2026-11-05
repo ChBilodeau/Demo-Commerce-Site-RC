@@ -1,5 +1,5 @@
 /* cases-NN.apex (GENERATED) — RC support Cases mirroring the articles.
- * Run each batch: sf apex run --target-org VSCodePlayground --file <file> */
+ * Run each batch: sf apex run --target-org <your-org-alias> --file <file> */
 // row: [subject, description, vehicleCategory, problemType, priority]
 List<List<String>> rows = new List<List<String>>{
   new List<String>{'RC: Warranty on a charger or accessory','My charger stopped working. How do I handle a warranty claim? This started recently and I am not sure what changed.','Other','Returns & Warranty','Medium'},

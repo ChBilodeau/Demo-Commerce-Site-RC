@@ -9,7 +9,7 @@
  * Phase 2: once nothing is Online, delete the Archived versions.
  *
  * Run REPEATEDLY until it reports Online=0 and Archived=0:
- *   sf apex run --target-org VSCodePlayground --file salesforce/knowledge-v2/delete-all-knowledge.apex
+ *   sf apex run --target-org <your-org-alias> --file salesforce/knowledge-v2/delete-all-knowledge.apex
  * -----------------------------------------------------------------------------
  */
 Integer onlineLeft = [SELECT COUNT() FROM Knowledge__kav WHERE PublishStatus = 'Online'];

@@ -1,9 +1,9 @@
 {
-  "name": "commerce-site",
+  "name": "demo-commerce-site-rc",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.0.0",
   "type": "module",
-  "description": "A demo/debugging storefront built on Coveo Headless Commerce.",
+  "description": "A downloadable, self-provisioning Coveo Headless Commerce demo storefront (Fallen Angels RC) with a browser setup wizard and a Kiro setup skill.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

@@ -12,8 +12,8 @@ import { QuickViewOverlay } from './QuickViewOverlay';
 /**
  * Live help-article suggestions shown beside the case form (search-as-you-type).
  *
- * Runs on the SAME Search API engine as the funnel's article step (hub
- * FASupport): category stays a hard filter + problem a boost (via
+ * Runs on the SAME Search API engine as the funnel's article step (the support
+ * search hub): category stays a hard filter + problem a boost (via
  * setSupportScope), and the user's subject + description become the query,
  * debounced so results update as they type. Clicking a suggestion opens the
  * quick-view overlay instead of navigating to Salesforce — continuing to

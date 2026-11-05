@@ -11,7 +11,12 @@ Usage:
     python3 scripts/add-part-variants.py <rc-parts.json>
 """
 import json
+import os
 import sys
+
+# Storefront base URL for the synthetic variant DocumentId. Set STOREFRONT_BASE
+# to your own storefront URL (the setup wizard records it in demo.config.json).
+BASE = os.environ.get("STOREFRONT_BASE", "https://demo.example.com")
 
 
 def main():
@@ -34,7 +39,7 @@ def main():
             continue
         sku = f"{pid}_V"  # single self-variant sku
         new_variants.append({
-            "DocumentId": f"https://chbi-shop.example.com/pdp/{sku}",
+            "DocumentId": f"{BASE}/pdp/{sku}",
             "FileExtension": "txt",
             "ObjectType": "Variant",
             "ec_product_id": pid,

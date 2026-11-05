@@ -16,7 +16,7 @@
  * together:   delete [SELECT Id FROM Case WHERE Subject LIKE 'RC:%'];
  *
  * HOW TO RUN (Salesforce CLI):
- *   sf apex run --target-org VSCodePlayground --file salesforce/seed-rc-cases-batch2.apex
+ *   sf apex run --target-org <your-org-alias> --file salesforce/seed-rc-cases-batch2.apex
  *
  * Type values:   Mechanical, Electrical, Electronic, Structural, Other
  * Reason values: Installation, Equipment Complexity, Performance, Breakdown, Feedback
