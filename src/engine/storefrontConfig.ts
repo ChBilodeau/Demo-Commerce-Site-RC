@@ -18,12 +18,14 @@
  * matching keeps working, OR re-register the PLPs against the real origin.
  *
  * Resolution order:
- *   1. VITE_STOREFRONT_BASE_URL  (explicit override, if set)
- *   2. window.location.origin    (the real runtime origin — the default)
- *   3. 'http://localhost:5173'   (SSR/test fallback when there is no window)
+ *   1. demo.config.json storefront.baseUrl  (explicit override, if set)
+ *   2. window.location.origin               (the real runtime origin — default)
+ *   3. 'http://localhost:5173'              (SSR/test fallback, no window)
  */
+import { demoConfig } from '../config/demoConfig';
+
 function resolveBaseUrl(): string {
-  const override = import.meta.env.VITE_STOREFRONT_BASE_URL as string | undefined;
+  const override = demoConfig.storefront.baseUrl;
   if (override && override.trim()) {
     return override.replace(/\/+$/, '');
   }

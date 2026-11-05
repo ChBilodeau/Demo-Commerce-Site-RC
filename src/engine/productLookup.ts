@@ -1,6 +1,7 @@
 import type { Product } from '@coveo/headless/commerce';
 import { LOCALE } from './commerceEngine';
 import { SEARCH_VIEW_URL } from './storefrontConfig';
+import { demoConfig } from '../config/demoConfig';
 
 /**
  * Resolves a single product by id straight from the Commerce API.
@@ -24,9 +25,9 @@ import { SEARCH_VIEW_URL } from './storefrontConfig';
  * Matching is by exact `permanentid` (falling back to `ec_product_id`), so a
  * search that merely returns similar products is not mistaken for a hit.
  */
-const ORG_ID = '__COVEO_ORG_ID__';
-const TRACKING_ID = 'chbi-shop';
-const ACCESS_TOKEN = import.meta.env.VITE_COVEO_ACCESS_TOKEN as string;
+const ORG_ID = demoConfig.coveo.organizationId;
+const TRACKING_ID = demoConfig.coveo.commerce.trackingId;
+const ACCESS_TOKEN = demoConfig.coveo.accessToken;
 
 export async function fetchProductById(
   id: string,

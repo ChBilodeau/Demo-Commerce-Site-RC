@@ -9,9 +9,11 @@
  * in the hosted page's network tab. Adjust REQUEST_PATH / buildBody if needed.
  */
 
-const ORG_ID = '__COVEO_ORG_ID__';
-const AGENT_ID = '3257aaec-9058-45d8-9fd7-ec60c6769852';
-const AGENT_TOKEN = import.meta.env.VITE_COVEO_AGENT_TOKEN as string | undefined;
+import { demoConfig } from '../config/demoConfig';
+
+const ORG_ID = demoConfig.coveo.organizationId;
+const AGENT_ID = demoConfig.coveo.searchAgent.agentId;
+const AGENT_TOKEN = demoConfig.coveo.searchAgent.token || undefined;
 
 const DEBUG = false;
 
@@ -25,9 +27,9 @@ const AGENT_BASE = `https://${ORG_ID}.org.coveo.com/api/v1/organizations/${ORG_I
 const ANSWER_PATH = '/answer';
 const FOLLOW_UP_PATH = '/follow-up';
 
-// The agent is scoped to this searchHub. This selects the query pipeline
-// server-side (the "CHBI - Commerce" hub → CHBI - Commerce pipeline).
-const SEARCH_HUB = 'CHBI - Commerce';
+// The agent is scoped to this searchHub, which selects the query pipeline
+// server-side. Configured per-user in demo.config.json (coveo.searchAgent.searchHub).
+const SEARCH_HUB = demoConfig.coveo.searchAgent.searchHub;
 
 // NOTE: the request `locale` does NOT control the Search Agent's answer
 // language — tested live (locale 'en' vs 'de-DE' gave identical English answers

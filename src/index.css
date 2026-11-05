@@ -41,11 +41,9 @@ body::before {
     /* neon corner glows */
     radial-gradient(1200px 600px at 80% -10%, rgba(177, 75, 255, 0.14), transparent 60%),
     radial-gradient(900px 500px at -10% 10%, rgba(0, 229, 255, 0.12), transparent 55%),
-    /* dark overlay to keep content readable */
-    linear-gradient(rgba(10, 10, 15, 0.78), rgba(10, 10, 15, 0.86)),
-    /* the texture itself */
-    url('https://res.cloudinary.com/dazzh5qm/image/upload/bg-texture.png');
-  background-size: cover, cover, cover, cover;
+    /* dark base (brand texture removed for the distributable demo) */
+    linear-gradient(rgba(10, 10, 15, 0.92), rgba(10, 10, 15, 0.96));
+  background-size: cover, cover, cover;
   background-position: center;
   background-repeat: no-repeat;
   pointer-events: none;

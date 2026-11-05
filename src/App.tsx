@@ -16,6 +16,7 @@ import {
   PrivacyPolicyPage,
 } from './components/StaticPages';
 import { SupportPage } from './components/SupportPage';
+import { brandImage } from './config/demoConfig';
 
 function HomePage() {
   return (
@@ -38,8 +39,8 @@ export default function App() {
         <Link to="/" className="app-title-link" aria-label="Fallen Angels RC — home">
           <img
             className="app-logo"
-            src="https://res.cloudinary.com/dazzh5qm/image/upload/fallen-angels-logo.png"
-            alt="Fallen Angels RC"
+            src={brandImage('logoPublicId')}
+            alt="Demo RC Store"
           />
         </Link>
         <CartIndicator />
@@ -66,7 +67,7 @@ export default function App() {
         <div className="footer-brand">
           <img
             className="footer-wings"
-            src="https://res.cloudinary.com/dazzh5qm/image/upload/fallen-angels-wings.png"
+            src={brandImage('wingsPublicId')}
             alt=""
             aria-hidden="true"
           />

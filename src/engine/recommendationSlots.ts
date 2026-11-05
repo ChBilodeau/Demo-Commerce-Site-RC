@@ -14,6 +14,8 @@
  *   - Most viewed      -> "Popular - viewed" strategy
  *   - Most purchased   -> "Popular - bought" strategy
  */
+import { demoConfig } from '../config/demoConfig';
+
 export interface SlotConfig {
   /** The slotId GUID from the CMH. Empty string = not configured yet. */
   slotId: string;
@@ -26,11 +28,11 @@ export const HOME_SLOTS: SlotConfig[] = [
 ];
 
 /**
- * The recommendation rail shown on the right side of the home page.
- * Uses the "Home Recs" slot from the CMH (id below). The slot's own headline
- * ("What people like!") is used when present; fallbackTitle is a backup.
+ * The recommendation rail shown on the right side of the home page. The slot id
+ * comes from demo.config.json (coveo.recommendations.homeSlotId); when empty,
+ * the rail renders nothing.
  */
 export const HOME_RAIL: SlotConfig = {
-  slotId: '74a5cd5b-30da-4e52-a4d4-95ebe8f16860',
+  slotId: demoConfig.coveo.recommendations.homeSlotId,
   fallbackTitle: 'Recommended for you',
 };

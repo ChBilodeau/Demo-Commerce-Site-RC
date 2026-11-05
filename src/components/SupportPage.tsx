@@ -17,6 +17,7 @@ import {
 } from '../engine/supportSearchEngine';
 import { QuickViewOverlay } from './QuickViewOverlay';
 import { LiveArticleSuggestions } from './LiveArticleSuggestions';
+import { brandImage } from '../config/demoConfig';
 import {
   SUPPORT_CATEGORIES,
   SUPPORT_PROBLEMS,
@@ -63,7 +64,7 @@ function SupportSetupNotice() {
       <div className="support-coming-soon">
         <img
           className="support-wings"
-          src="https://res.cloudinary.com/dazzh5qm/image/upload/fallen-angels-wings.png"
+          src={brandImage('wingsPublicId')}
           alt=""
           aria-hidden="true"
         />

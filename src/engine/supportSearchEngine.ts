@@ -10,6 +10,7 @@ import {
   type ResultList,
   type Result,
 } from '@coveo/headless';
+import { demoConfig } from '../config/demoConfig';
 
 /**
  * Coveo SEARCH API engine for the Technical Support experience.
@@ -34,13 +35,18 @@ import {
  * `sfproblem_type__c`. Values match the funnel picklist labels exactly.
  */
 
-const ORG_ID = '__COVEO_ORG_ID__';
-const ACCESS_TOKEN = import.meta.env.VITE_COVEO_ACCESS_TOKEN as string;
-const SEARCH_HUB = 'FASupport';
+const ORG_ID = demoConfig.coveo.organizationId;
+const ACCESS_TOKEN = demoConfig.coveo.accessToken;
+const SEARCH_HUB = demoConfig.coveo.support.searchHub;
+
+// Coveo index field names for the Knowledge tags, from the Salesforce source
+// mapping. Configurable per-user in demo.config.json (coveo.support.fields).
+const FIELD_CATEGORY = demoConfig.coveo.support.fields.vehicleCategory;
+const FIELD_PROBLEM = demoConfig.coveo.support.fields.problemType;
 
 export const SUPPORT_FIELDS_TO_INCLUDE = [
-  'sfvehicle_category__c',
-  'sfproblem_type__c',
+  FIELD_CATEGORY,
+  FIELD_PROBLEM,
   'sfdescription__c',
   'sfsolution__c',
   'uri',
@@ -96,7 +102,7 @@ export function getSupportSearchEngine(): SearchEngine {
           // Hard filter by category via constant query (cached, doesn't affect
           // relevance scoring of the query terms).
           if (activeCategory) {
-            const catExpr = `@sfvehicle_category__c=="${q(activeCategory)}"`;
+            const catExpr = `@${FIELD_CATEGORY}=="${q(activeCategory)}"`;
             body.cq = body.cq ? `(${body.cq}) AND (${catExpr})` : catExpr;
           }
 
@@ -111,7 +117,7 @@ export function getSupportSearchEngine(): SearchEngine {
           // Boost (not filter) the chosen problem type.
           if (activeProblem) {
             const boost = {
-              expression: `@sfproblem_type__c=="${q(activeProblem)}"`,
+              expression: `@${FIELD_PROBLEM}=="${q(activeProblem)}"`,
               modifier: 1000,
               isConstant: true,
             };
@@ -174,12 +180,12 @@ export function buildSupportQuickview(result: Result) {
 
 /** Read the indexed problem-type value off a result (for client-side ordering). */
 export function resultProblemType(result: Result): string | undefined {
-  const v = result.raw?.sfproblem_type__c;
+  const v = result.raw?.[FIELD_PROBLEM];
   return typeof v === 'string' ? v : undefined;
 }
 
 /** Read the indexed category value off a result. */
 export function resultCategory(result: Result): string | undefined {
-  const v = result.raw?.sfvehicle_category__c;
+  const v = result.raw?.[FIELD_CATEGORY];
   return typeof v === 'string' ? v : undefined;
 }

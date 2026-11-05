@@ -17,3 +17,11 @@ Built in phases (see `docs/demo-setup-design.md`):
 - Phase 1: project scaffold copied from the working RC site (no real org
   values) and the setup architecture design doc
   (`docs/demo-setup-design.md`).
+- Phase 2: central config system. `src/config/demoConfig.ts` reads
+  `demo.config.json` (git-ignored; `demo.config.example.json` documents the
+  shape) and every engine/UI value — Coveo org id, tokens, tracking id, search
+  hubs, recommendation slot id, support field names, Cloudinary cloud, brand
+  images, feature flags — is now read from it. No org-specific value is
+  hardcoded anywhere (verified). Feature flags gate each surface. Cart storage
+  keys and brand image URLs are templated; the brand background texture and
+  favicon were made generic.

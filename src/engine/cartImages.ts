@@ -8,7 +8,7 @@
  * from Conversational Product Discovery, a bundle, or a different category).
  * Recording the image at add-time fixes that for every entry point.
  */
-const KEY = 'chbi-shop-cart-images';
+const KEY = 'demo-rc-cart-images';
 
 function load(): Record<string, string> {
   if (typeof localStorage === 'undefined') return {};

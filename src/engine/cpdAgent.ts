@@ -21,15 +21,17 @@
  * on unknown component types.
  */
 
-const ORG_ID = '__COVEO_ORG_ID__';
+import { demoConfig } from '../config/demoConfig';
+
+const ORG_ID = demoConfig.coveo.organizationId;
 const ENDPOINT = `https://platform.cloud.coveo.com/rest/organizations/${ORG_ID}/commerce/unstable/agentic/converse`;
-const CPD_TOKEN = import.meta.env.VITE_COVEO_CPD_TOKEN as string | undefined;
+const CPD_TOKEN = demoConfig.coveo.cpd.token || undefined;
 
-const LOCALE = { language: 'en', country: 'CA', currency: 'CAD' } as const;
-const TRACKING_ID = 'chbi-shop';
-const DEBUG = (import.meta.env.VITE_COVEO_CPD_DEBUG as string | undefined) === 'true';
+const LOCALE = demoConfig.coveo.commerce.locale;
+const TRACKING_ID = demoConfig.coveo.commerce.trackingId;
+const DEBUG = false;
 
-export const isCpdConfigured = Boolean(CPD_TOKEN);
+export const isCpdConfigured = demoConfig.features.tryCPD && Boolean(CPD_TOKEN);
 
 function getClientId(): string {
   const KEY = 'chbi-cpd-client-id';

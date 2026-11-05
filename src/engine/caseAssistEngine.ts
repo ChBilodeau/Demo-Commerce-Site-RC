@@ -9,6 +9,7 @@ import {
   type CaseField,
   type DocumentSuggestionList,
 } from '@coveo/headless/case-assist';
+import { demoConfig } from '../config/demoConfig';
 
 /**
  * Coveo Case Assist wiring for the Technical Support experience.
@@ -31,20 +32,18 @@ import {
  * CC model was configured to provide suggestions for.
  */
 
-const ORGANIZATION_ID = '__COVEO_ORG_ID__';
+const ORGANIZATION_ID = demoConfig.coveo.organizationId;
 
-const CASE_ASSIST_ID = import.meta.env.VITE_COVEO_CASE_ASSIST_ID as string | undefined;
+const CASE_ASSIST_ID = demoConfig.coveo.support.caseAssistId || undefined;
 
 const ACCESS_TOKEN =
-  (import.meta.env.VITE_COVEO_CASE_ASSIST_TOKEN as string | undefined) ??
-  (import.meta.env.VITE_COVEO_ACCESS_TOKEN as string | undefined) ??
-  '';
+  demoConfig.coveo.support.caseAssistToken || demoConfig.coveo.accessToken || '';
 
 /** Locale passed to the CC model for contextually relevant suggestions. */
-const LOCALE = 'en-CA';
+const LOCALE = `${demoConfig.coveo.commerce.locale.language}-${demoConfig.coveo.commerce.locale.country}`;
 
 /** The searchHub identifies this interface in Coveo analytics. */
-const SEARCH_HUB = 'chbi-support';
+const SEARCH_HUB = demoConfig.coveo.support.searchHub;
 
 /**
  * The Case fields the CC model predicts. These are Coveo index field names (how
@@ -59,9 +58,10 @@ const SEARCH_HUB = 'chbi-support';
  * "Fields to provide suggestions" setting in the Coveo Admin Console.
  */
 function parseFieldsEnv(): { field: string; label: string }[] {
-  const raw = (import.meta.env.VITE_COVEO_CASE_ASSIST_FIELDS as string | undefined)?.trim();
+  // Classification fields default to the standard Case Type/Reason mapping.
+  // (Kept configurable in code; the demo funnel drives category/problem itself.)
   const fallback = 'sfcasetype:Type,sfcasereason:Reason';
-  return (raw || fallback).split(',').map((entry) => {
+  return fallback.split(',').map((entry) => {
     const [field, label] = entry.split(':').map((s) => s.trim());
     return { field, label: label || field };
   });
@@ -76,9 +76,8 @@ export const CLASSIFICATION_LABELS: Record<string, string> = Object.fromEntries(
   PARSED_FIELDS.map((f) => [f.field, f.label]),
 );
 
-/** When true, logs the raw Case Assist classification/suggestion state to the console. */
-export const CASE_ASSIST_DEBUG =
-  (import.meta.env.VITE_COVEO_CASE_ASSIST_DEBUG as string | undefined) === 'true';
+/** When true, logs the raw Case Assist classification/suggestion state. */
+export const CASE_ASSIST_DEBUG = false;
 
 /**
  * Maps a Coveo classification field name to the Salesforce Web-to-Case field
@@ -94,8 +93,9 @@ export const CLASSIFICATION_TO_SALESFORCE: Record<string, string> = {
   sfcasereason: 'reason',
 };
 
-/** True when the Case Assist ID has been configured. Used to show setup help. */
-export const isCaseAssistConfigured = Boolean(CASE_ASSIST_ID);
+/** True when the support feature is enabled and Case Assist is configured. */
+export const isCaseAssistConfigured =
+  demoConfig.features.support && Boolean(CASE_ASSIST_ID);
 
 export interface CaseAssistControllers {
   engine: CaseAssistEngine;

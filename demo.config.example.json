@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "coveo": {
+    "organizationId": "",
+    "region": "us",
+    "accessToken": "",
+    "commerce": {
+      "trackingId": "",
+      "searchHub": "",
+      "locale": { "language": "en", "country": "US", "currency": "USD" }
+    },
+    "searchAgent": {
+      "enabled": false,
+      "agentId": "",
+      "searchHub": "",
+      "token": ""
+    },
+    "cpd": {
+      "enabled": false,
+      "token": ""
+    },
+    "support": {
+      "enabled": false,
+      "searchHub": "",
+      "caseAssistId": "",
+      "caseAssistToken": "",
+      "fields": {
+        "vehicleCategory": "sfvehicle_category__c",
+        "problemType": "sfproblem_type__c"
+      }
+    },
+    "recommendations": {
+      "homeSlotId": ""
+    }
+  },
+  "salesforce": {
+    "orgAlias": "",
+    "orgId": "",
+    "webToCase": {
+      "orgId": "",
+      "fieldIds": {
+        "vehicleCategory": "",
+        "problemType": "",
+        "viewedArticles": ""
+      }
+    }
+  },
+  "images": {
+    "provider": "cloudinary",
+    "cloudName": "",
+    "baseTransform": "f_auto,q_auto,w_600",
+    "brand": {
+      "logoPublicId": "demo-rc-logo",
+      "wingsPublicId": "demo-rc-wings",
+      "backgroundPublicId": "demo-rc-bg"
+    }
+  },
+  "storefront": {
+    "name": "Demo RC Store",
+    "baseUrl": ""
+  },
+  "features": {
+    "search": true,
+    "recommendations": false,
+    "askCoveoAI": false,
+    "tryCPD": false,
+    "support": false
+  }
+}

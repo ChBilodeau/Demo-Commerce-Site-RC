@@ -1,6 +1,6 @@
 import type { CartItem } from '@coveo/headless/commerce';
 
-const STORAGE_KEY = 'chbi-shop-cart';
+const STORAGE_KEY = 'demo-rc-cart';
 
 /**
  * Loads the persisted cart items from localStorage. Returns an empty array if
