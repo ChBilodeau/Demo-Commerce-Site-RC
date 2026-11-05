@@ -17,6 +17,13 @@ Built in phases (see `docs/demo-setup-design.md`):
 - Phase 1: project scaffold copied from the working RC site (no real org
   values) and the setup architecture design doc
   (`docs/demo-setup-design.md`).
+- Phase 3: setup wizard + two-way bridge. The app boots into "setup mode" when
+  `demo.config.json` is missing (or at `/setup`), rendering a browser wizard
+  (`src/setup/`) that collects every config value, shows the Cloudinary steps +
+  ChatGPT image prompt, and saves the config. A dev-only Vite plugin
+  (`vite-setup-bridge.ts`) adds `/__setup/*` endpoints backed by files so the
+  wizard and the Kiro skill communicate both ways (skill posts
+  questions/status; user answers in the browser). Verified end-to-end.
 - Phase 2: central config system. `src/config/demoConfig.ts` reads
   `demo.config.json` (git-ignored; `demo.config.example.json` documents the
   shape) and every engine/UI value — Coveo org id, tokens, tracking id, search

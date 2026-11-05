@@ -1,10 +1,13 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+import { setupBridge } from './vite-setup-bridge';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  // setupBridge adds dev-only /__setup/* endpoints so the browser setup wizard
+  // can read/write demo.config.json and exchange messages with the Kiro skill.
+  plugins: [react(), setupBridge()],
   server: {
-    port: 5174, // different from ItemScore (5173) so both can run at once
+    port: 5174,
   },
 });
