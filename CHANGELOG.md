@@ -14,6 +14,16 @@ Built in phases (see `docs/demo-setup-design.md`):
 ## [Unreleased]
 
 ### Added
+- Phase 4: the Kiro setup skill (`.kiro/skills/setup-demo/`). `SKILL.md` drives
+  the whole first-time setup — it states the automated-vs-guided split, explains
+  the file-backed setup bridge, and sequences six phases, each with a
+  copy-ready reference in `references/` (prerequisites, configuration, Coveo,
+  Salesforce, per-feature wiring, verify & launch). Ships three helper scripts
+  in `scripts/`: `check-prereqs.sh` (reports installed CLIs),
+  `coveo-create-source.mjs` (creates the Coveo catalog push source from env),
+  and `verify-coveo.mjs` (read-only Commerce/support queries that confirm the
+  content is actually queryable). Auto-discovered by Kiro and runnable via the
+  `/setup-demo` slash command.
 - Phase 1: project scaffold copied from the working RC site (no real org
   values) and the setup architecture design doc
   (`docs/demo-setup-design.md`).
